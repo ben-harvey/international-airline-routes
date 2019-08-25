@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import {routes, airlines, airports} from './data.js'
+import {
+  routes,
+  airlines,
+  airports,
+  getAirportByCode,
+  getAirlineById,
+} from './data.js'
 
 class App extends Component {
   render() {
@@ -17,9 +23,9 @@ class App extends Component {
             <tbody>
               {routes.map(route => (
               <tr >
-                <td>{route.airline}</td>
-                <td>{route.src}</td>
-                <td>{route.dest}</td>
+                <td>{getAirlineById(route.airline)}</td>
+                <td>{getAirportByCode(route.src)}</td>
+                <td>{getAirportByCode(route.dest)}</td>
               </tr>
              ))}
           </tbody>
