@@ -28,7 +28,15 @@ class App extends Component {
     ];
 
     return (
-      <Table className="routes-table" columns={columns} rows={routes} format={this.formatData} />
+      <div className="app">
+        <header className="header">
+          <h1 className="title">Airline Routes</h1>
+        </header>
+
+        <section>
+          <Table className="routes-table" columns={columns} rows={routes} format={this.formatData} />
+        </section>
+      </div>
     );
   }
 }
