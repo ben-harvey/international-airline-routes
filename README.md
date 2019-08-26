@@ -8,21 +8,6 @@ $ heroku buildpacks:set https://github.com/mars/create-react-app-buildpack.git
 $ git push heroku master
 -->
 
-Step 6: Filter Routes by Airline
-Add a Select box that filters the data in the table by airline
-
-Step 7: Extract Select Component
-Move select code into a new Select component that can be used in App.js as shown in the code example below.
-Update App.js to import and use the new component
-<Select options={filteredAirlines} valueKey="id" titleKey="name"
-  allTitle="All Airlines" value="" onSelect="" />
-
-Step 8: Filter Routes by Airport
-Add a second select that filters routes by airport using the Select component
-
-Step 9: Clear Filter Button
-Add a Clear Filters button that clears any filters that have been set
-
 Step 10: Disable Empty Options
 Disable options within both selects that have no matching routes based on the values of the other select. See the deployed version for an example of how this should work.
 Step 11: Add a Map (OPTIONAL)
