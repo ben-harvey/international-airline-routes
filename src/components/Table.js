@@ -6,7 +6,7 @@ class Table extends Component {
   }
 
   state = {
-    page: 800,
+    page: 0,
   }
 
   nextPage = (e) => {
@@ -44,7 +44,7 @@ class Table extends Component {
 
     return (
       <div>
-        <table class="routes-table">
+        <table className={this.props.className}>
             <thead>
               <tr>
                 {headerTitles}

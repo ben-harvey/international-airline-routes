@@ -1397,5 +1397,5 @@ const airports = [
 const getAirlineById = (id) => airlines.filter(airline => airline.id === id)[0].name;
 
 const getAirportByCode = (code) => airports.filter(airport => airport.code === code)[0].name;
-
-export {routes, airlines, airports, getAirportByCode, getAirlineById};
+//
+export default {routes, airlines, airports, getAirportByCode, getAirlineById};

@@ -6,40 +6,7 @@ Push your code to Heroku to deploy
 $ heroku create
 $ heroku buildpacks:set https://github.com/mars/create-react-app-buildpack.git
 $ git push heroku master
- -->
-Step 2: Display Raw Data
-Require the data.js file within App.js
-Display the raw values (airline, src, and dest) of the objects in the routes array from data.js in a table.
-
-Step 3: Humanize Values in Table
-Add getAirlineById(id) and getAirportByCode(code) functions to data.js
-Import the new functions in App.js and use them to display human friendly values in the table
-airline name instead of airline id
-airport name instead of airport code
-
-Step 4: Extract a Table Component
-Move table code into a new Table component that can be used in App.js as shown in the code example below.
-The format prop should be passed a function that has the interface shown below.
-Update App.js to import and use the new component
-function formatValue(property, value) { // return a string }
-
-const columns = [
-  {name: 'Airline', property: 'airline'},
-  {name: 'Source Airport', property: 'src'},
-  {name: 'Destination Airport', property: 'dest'},
-];
-
-...
-
-<Table className="routes-table" columns={columns} rows="" format="" />
-
-Step 5: Add Pagination to Table
-Update the Table component so that only 25 rows are shown at a time
-Display a message that says Showing n - n+25 routes of x total routes
-Display Previous Page and Next Page buttons
-Adjust the page shown when the buttons are clicked
-Disable the paging controls to prevent a user from going outside valid bounds
-Allow the number of rows per page to be specified as a perPage prop
+-->
 
 Step 6: Filter Routes by Airline
 Add a Select box that filters the data in the table by airline
