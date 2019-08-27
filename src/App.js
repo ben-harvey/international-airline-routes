@@ -35,6 +35,8 @@ class App extends Component {
     };
   }
 
+
+
   handleSelectAirline = (e) => {
     let newAirline = e.target.value;
     newAirline = +newAirline || 'all'
@@ -63,6 +65,16 @@ class App extends Component {
       return this.filterRoutesByAirline(route) && this.filterRoutesByAirport(route);
     });
 
+    const filteredAirportsByAirline = Data.airports.filter(airport => {
+      const code = airport.code;
+      return filteredRoutes.some(route => route.src === code || route.dest === code);
+    }).map(airport => airport.code);
+
+    const filteredAirlinesByAirport = Data.airlines.filter(airline => {
+      const id = airline.id;
+      return filteredRoutes.some(route => route.airline === id);
+    }).map(airline => airline.id);
+
     const allShowing =  this.state.airline === 'all' && this.state.airport === 'all';
 
     return (
@@ -74,14 +86,16 @@ class App extends Component {
         <section>
           <p>
             Show routes on
-            <Select options={Data.airlines} valueKey="id" titleKey="name" allTitle="All Airlines"
+              <Select options={Data.airlines} valueKey="id" titleKey="name" allTitle="All Airlines"
               value={this.state.airline}
               onSelect={this.handleSelectAirline}
+              filtered={filteredAirlinesByAirport}
             />
             flying in or out of
             <Select options={Data.airports} valueKey="code" titleKey="name" allTitle="All Airports"
               value={this.state.airport}
               onSelect={this.handleSelectAirport}
+              filtered={filteredAirportsByAirline}
             />
             <button disabled={allShowing} onClick={this.showAll}>Show All Routes</button>
           </p>

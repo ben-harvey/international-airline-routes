@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 
 class Select extends Component {
-
-
   render() {
     const valueKey = this.props.valueKey;
     const options = this.props.options.map(option => {
@@ -12,6 +10,7 @@ class Select extends Component {
         <option
         key={key}
         value={key}
+        disabled={!this.props.filtered.includes(key)}  // for airport, ['ADF']
         >
           {option[this.props.titleKey]}
         </option>
