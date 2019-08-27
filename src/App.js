@@ -12,7 +12,7 @@ class App extends Component {
     airport: 'all',
   }
 
-  formatData (property, value) {
+  formatData(property, value) {
     if (property === 'airline') {
       return Data.getAirlineById(value).name;
     } else {
@@ -20,23 +20,21 @@ class App extends Component {
     }
   }
 
-  filterRoutesByAirline (route) {
+  filterRoutesByAirline(route) {
     if (this.state.airline === 'all') {
       return true;
     } else {
-      return this.state.airline === route.airline;
+      return this.state.airline === route.airline
     };
   }
 
-  filterRoutesByAirport (route) {
+  filterRoutesByAirport(route) {
     if (this.state.airport === 'all') {
       return true;
     } else {
       return [route.src, route.dest].includes(this.state.airport)
     };
   }
-
-
 
   handleSelectAirline = (e) => {
     let newAirline = e.target.value;
@@ -52,14 +50,14 @@ class App extends Component {
 
   showAll = (e) => {
     e.preventDefault();
-    this.setState({ airline: 'all', airport: 'all'})
+    this.setState({ airline: 'all', airport: 'all' })
   }
 
   render() {
     const columns = [
-      {name: 'Airline', property: 'airline'},
-      {name: 'Source Airport', property: 'src'},
-      {name: 'Destination Airport', property: 'dest'},
+      { name: 'Airline', property: 'airline' },
+      { name: 'Source Airport', property: 'src' },
+      { name: 'Destination Airport', property: 'dest' },
     ];
 
     const filteredRoutes = Data.routes.filter(route => {
@@ -76,7 +74,7 @@ class App extends Component {
       return filteredRoutes.some(route => route.airline === id);
     }).map(airline => airline.id);
 
-    const allShowing =  this.state.airline === 'all' && this.state.airport === 'all';
+    const allShowing = this.state.airline === 'all' && this.state.airport === 'all';
 
     return (
       <div className="app">

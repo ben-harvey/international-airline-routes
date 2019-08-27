@@ -11,12 +11,12 @@ class Table extends Component {
 
   nextPage = (e) => {
     e.preventDefault();
-    this.setState({ page: this.state.page + this.props.perPage})
+    this.setState({ page: this.state.page + this.props.perPage })
   }
 
   prevPage = (e) => {
     e.preventDefault();
-    this.setState({ page: this.state.page - this.props.perPage})
+    this.setState({ page: this.state.page - this.props.perPage })
   }
 
   render() {
@@ -29,8 +29,8 @@ class Table extends Component {
     const perPage = this.props.perPage;
     const pageLength = page + perPage;
 
-    const bodyRows = this.props.rows.slice(page, page + perPage).map( (row) => {
-      const rows = this.props.columns.map( (col) => {
+    const bodyRows = this.props.rows.slice(page, page + perPage).map((row) => {
+      const rows = this.props.columns.map((col) => {
         const value = row[col.property];
         return <td key={col.property + value}>{ this.props.format(col.property, value) }</td>
       });
@@ -54,7 +54,7 @@ class Table extends Component {
               {bodyRows}
           </tbody>
         </table>
-        <div class="pagination">
+        <div className="pagination">
           <p>
             Showing {page + 1}-{pageLength > length ? length : pageLength} of {length} routes.
           </p>
@@ -76,7 +76,6 @@ class Table extends Component {
       </div>
     )
   }
-
 }
 
 export default Table;

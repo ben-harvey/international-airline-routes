@@ -4,14 +4,10 @@ import Data from '../data';
 
 class Map extends Component {
   render() {
-  const airports = Data.airports;
-
   const routes = this.props.routes.map(route => {
     const {src, dest} = route;
     const srcAirport = Data.getAirportByCode(src);
     const destAirport = Data.getAirportByCode(dest);
-    // const srcAirport = airports.find(airport => airport.code === src);
-    // const destAirport = airports.find(airport => airport.code === dest);
     const {long: srcLong, lat: srcLat} = srcAirport;
     const {long: destLong, lat: destLat} = destAirport;
     const key = [route.airline, route.src, route.dest].join(':')
