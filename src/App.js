@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Table from './components/Table'
-import Select from './components/Select'
-import Data from './data'
+import Table from './components/Table';
+import Map from './components/Map';
+import Select from './components/Select';
+import Data from './data';
 
 
 class App extends Component {
@@ -13,9 +14,9 @@ class App extends Component {
 
   formatData (property, value) {
     if (property === 'airline') {
-      return Data.getAirlineById(value);
+      return Data.getAirlineById(value).name;
     } else {
-      return Data.getAirportByCode(value);
+      return Data.getAirportByCode(value).name;
     }
   }
 
@@ -84,6 +85,7 @@ class App extends Component {
         </header>
 
         <section>
+          <Map routes={filteredRoutes} airports={Data.airports} />
           <p>
             Show routes on
               <Select options={Data.airlines} valueKey="id" titleKey="name" allTitle="All Airlines"
